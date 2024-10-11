@@ -255,7 +255,7 @@ where
     ) -> C::Struct<'db> {
         let (zalsa, zalsa_local) = db.zalsas();
 
-        let data_hash = crate::hash::hash(&C::id_fields(&fields));
+        let data_hash = crate::hash::hash(&(C::id_fields(&fields), self.ingredient_index));
 
         let (current_deps, disambiguator) = zalsa_local.disambiguate(data_hash);
 
